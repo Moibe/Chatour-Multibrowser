@@ -19,20 +19,40 @@ def check_exists_by_xpath(xpath, driver):
             return False
     return True
 
-url = 'https://chaturbate.com/shmoopiebebz_/'
+url = 'https://chaturbate.com/rebeccawinter/'
 a = {}
-browsers = 50
+browsers = 100
 print("Por entrar...")
+change_counter = 0
+cambios_pais = 0
+
+#Siempre iniciamos cargando la VPN.
+rotate_VPN()
 
 for i in range(browsers):
     
-        azar = randint(1,5)
-        print("Obtuvimos...")
-        print(azar)
-        if azar == 5: 
-            print("Cambiaremos de red porque salió 5...")
-            rotate_VPN()
+# =============================================================================
+#         azar = randint(1,5)
+#         print("Obtuvimos...")
+#         print(azar)
+#         if azar == 5: 
+#             print("Cambiaremos de red porque salió 5...")
+#             rotate_VPN()
+# =============================================================================
     
+        change_counter = change_counter + 1
+        print("Change_counter va en...")
+        print(change_counter)
+        
+        if change_counter == 18: 
+            print("Llegamos al 18, cambio de red...")
+            rotate_VPN()
+            change_counter = 0
+            cambios_pais = cambios_pais + 1
+            print("van estos cambios de país...")
+            print(cambios_pais)
+            print("Espera a que recarguen...")
+            time.sleep(10)
        
         print("i es igual a...")
         print(i)
@@ -57,22 +77,19 @@ for i in range(browsers):
             else:
                 print("EL ELEMENTO NO EXISTE PQ NOS FUIMOS A UN CAPTCHA...")
                 time.sleep(randint(4,18))
-                print("Vamos a buscar el captcha.")
-                time.sleep(1)
-                captcha = a[i].find_element(By.CLASS_NAME, "challenge-form interactive-form").click()
+                print("Entonces cambiamos de red y seguimos...")
+                rotate_VPN()
+# =============================================================================
+#                 print("Vamos a buscar el captcha.")
+#                 time.sleep(1)
+#                 captcha = a[i].find_element(By.CLASS_NAME, "challenge-form interactive-form").click()
+# =============================================================================
         
         except IndexError as e:
             time.sleep(2)
             print("Llegamos a un except.")
             print(e)
         
-# =============================================================================
-#         
-# =============================================================================
-        
-
-        
-
 
 #initialize_VPN(save=1,area_input=['complete rotation'])
 
